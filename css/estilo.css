@@ -1,0 +1,101 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+body {
+  font-family: "Lora", serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background-color: #ffffff;
+  color: #252525;
+}
+
+header {
+  background-color: #000000; 
+  color: white;
+  padding: 15px;
+  
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  background-color: #1E1E1E; 
+  display: flex;  
+  justify-content: center;
+  gap: 15px;
+  padding: 10px 0;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  transition: 0.3s;
+  background-color: #333333;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  background-color: #1E90FF;
+  color: #fff;
+}
+
+main {
+  margin-top: 20px;
+}
+
+.tabela-futebol {
+  margin: 30px auto;
+  max-width: 900px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-family: "Lora", serif;
+  font-size: 16px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+th {
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+  background-color: #1E90FF; 
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+h2 {
+  margin-top: 40px;
+  font-size: 28px;
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
