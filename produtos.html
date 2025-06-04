@@ -12,7 +12,7 @@
 <body>
     <header>
         <div class="logo">
-            <img src="imagens/scentrixfragrances.png" alt="Scentrix Fragrances Logo">
+            <img src="imagens/scentrix fragrances2.png" alt="Scentrix Fragrances Logo">
         </div>
         <nav>
             <ul>
@@ -29,45 +29,60 @@
         <section class="produtos">
             <h1>Produtos Disponíveis</h1>
             <p>Confira nossa variedade de produtos para os mais diversos olfatos!</p>
-            <div class="produto">
+            <div class="produto" data-nome="Phantom Intense" data-preco="489.90">
                 <h2>Phantom Intense</h2>
-                <p>Intense é uma fragrância masculina futurista e poderosa, com notas de lavanda, baunilha e vetiver.
-                 Perfeita para quem quer ousar com estilo. </p>
                  <p>Preço: R$ 489,90</p>
-                <img src="https://dkolopwjqarcp.cloudfront.net/Custom/Content/Products/98/57/9857_bad-boy-cobalt-edp-100ml_z4_638337439460266407.webp" alt="bad boy cobalt" width="150">
+                <img src="https://www.bnedutyfree.com.au/media/catalog/product/cache/e6410293f9a24f502cd707ec5c46309d/4/6/467dbc4c-89a5-4f27-b7ff-a463b4c36185.jpeg" alt="bad boy cobalt" width="150">
+                <button onclick="adicionarAoCarrinho(this)">Adicionar ao carrinho</button>
             </div>
-            <div class="produto">
+            <div class="produto" data-nome="Bad Boy Cobalt" data-preco="559.90">
                 <h2>Bad Boy Cobalt</h2>
-                <p>Bad Boy Cobalt é um perfume masculino intenso e sofisticado, com notas de lavanda, pimenta rosa e vetiver. 
-                 Ideal para quem busca uma fragrância marcante e moderna</p>
                  <p>Preço: R$ 559,90</p>
-                <img src="https://www.bnedutyfree.com.au/media/catalog/product/cache/e6410293f9a24f502cd707ec5c46309d/4/6/467dbc4c-89a5-4f27-b7ff-a463b4c36185.jpeg" alt="phantom intense" width="150">
+                <img src="https://dkolopwjqarcp.cloudfront.net/Custom/Content/Products/98/57/9857_bad-boy-cobalt-edp-100ml_z4_638337439460266407.webp" alt="phantom intense" width="150">
+                <button onclick="adicionarAoCarrinho(this)">Adicionar ao carrinho</button>
             </div>
-             <div class="produto">
+             <div class="produto" data-nome="Ultra Male" data-preco="469.90">
                 <h2>Ultra Male</h2>
-                <p>Ultra Male, da Jean Paul Gaultier, é uma fragrância intensa e sedutora que mistura notas doces de pera e baunilha com toques frescos de bergamota e hortelã. 
-                Ideal para quem quer um perfume marcante e moderno.</p>
                 <p>Preço: R$ 469,90</p>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0Er-ToeB-tIMTSCXwQHV3825VetZq0bNE8Q&s" alt="ultra male" width="150">
+                <button onclick="adicionarAoCarrinho(this)">Adicionar ao carrinho</button>
             </div>
-            <div class="produto">
+            <div class="produto" data-nome="Invictus Victory Elixir" data-preco="529.90">
                 <h2>Invictus Victory Elixir</h2>
-                <p>Invictus Victory Elixir, da Paco Rabanne, é uma fragrância poderosa e vibrante que combina notas cítricas e especiadas com um toque amadeirado intenso. 
-                Perfeito para quem busca um aroma marcante e cheio de energia.</p>
                 <p>Preço: R$ 529,90</p>
-                <img src="https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw91a34d30/images/hi-res-BR/3349668614523.1_1500px.jpg?sw=556&sh=680&sm=fit" alt="invitus victory elixir" width="150">
+                <img src="https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw91a34d30/images/hi-res-BR/3349668614523.1_1500px.jpg?sw=556&sh=680&sm=fit" alt="invictus victory elixir" width="150">
+                <button onclick="adicionarAoCarrinho(this)">Adicionar ao carrinho</button>
             </div>
-            <div class="produto">
+            <div class="produto" data-nome="Acqua di Gio Profondo Parfum" data-preco="499.90">
                 <h2>Acqua di Gio Profondo Parfum</h2>
-                <p>O Acqua di Giò Profondo Parfum, lançado em 2024, é uma evolução sofisticada da linha Acqua di Giò. 
-                Com notas de mandarina verde, lavanda, patchouli e âmbar, oferece uma experiência aquática e aromática com um toque amadeirado. É ideal para quem busca uma fragrância fresca e marcante, perfeita para o uso diário.</p>
                 <p>Preço: R$ 499,90</p>
                 <img src="https://cea.vtexassets.com/arquivos/ids/58854235-800-auto?v=638572781796630000&width=800&height=auto&aspect=true" alt="acqua di gio profondo parfum" width="150">
+                <button onclick="adicionarAoCarrinho(this)">Adicionar ao carrinho</button>
             </div>
         </section>
     </main>
     <footer>
         <p>&copy; 2025 Loja Scentrix Fragances - Todos os direitos reservados.</p>
     </footer>
+    <script>
+  let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+  
+  function adicionarAoCarrinho(botao) {
+    const produto = botao.parentElement;
+    const nome = produto.getAttribute("data-nome");
+    const preco = parseFloat(produto.getAttribute("data-preco"));
+    const imagem = produto.querySelector("img").src;
+
+    carrinho.push({ nome, preco, imagem });
+
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+    const total = carrinho.reduce((acc, item) => acc + item.preco, 0);
+
+    alert(`${nome} adicionado ao carrinho!\nTotal: R$ ${total.toFixed(2)}`);
+  }
+</script>
+
+
 </body>
 </html>

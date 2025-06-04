@@ -1,60 +1,192 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Carrinho - Loja Scentrix Fragances">
-    <meta name="author" content="Scentrix Fragances">
-    <title>Carrinho - Loja Scentrix Fragances</title>
-    <link rel="stylesheet" href="css/estilo.css">
-       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Carrinho - Loja Scentrix Fragances" />
+  <meta name="author" content="Scentrix Fragances" />
+  <title>Carrinho - Loja Scentrix Fragances</title>
+  <link rel="stylesheet" href="css/estilo.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+  />
+  <style>
+    .item {
+      border-bottom: 1px solid #ccc;
+      padding: 15px 0;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .item img {
+      width: 100px;
+      height: auto;
+      object-fit: contain;
+    }
+    .item-info {
+      flex-grow: 1;
+    }
+    .total {
+      margin-top: 30px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    .botao, .botao-voltar {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #333;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+    .botao-voltar {
+      background-color: #666;
+    }
+    button.remover-btn {
+      margin-top: 10px;
+      padding: 6px 12px;
+      background-color: #c0392b;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button.remover-btn:hover {
+      background-color: #e74c3c;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-           <img src="imagens/scentrixfragrances.png" alt="Scentrix Fragrances Logo">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html"><i class="bi bi-house"></i>Início</a></li>
-                <li><a href="produtos.html"><i class="bi bi-tag"></i>Produtos</a></li>
-                <li><a href="sobre.html"><i class="bi bi-info-circle"></i>Sobre</a></li>
-                <li><a href="contato.html"><i class="bi bi-whatsapp"></i>Contato</a></li>
-                <li><a href="carrinho.html"><i class="bi bi-cart"></i>Carrinho</a></li>
-                <li><a href="blog.html"><i class="bi bi-book"></i>Blog</a></li>
-                <li><a href="suporte.html"><i class="bi bi-question-lg"></i>Suporte</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="carrinho">
-            <h1>Seu Carrinho de Compras</h1>
-            <p>Confira os itens que você adicionou ao carrinho.</p>
-           
-            <div class="item">
-                <h2>Bad Boy Cobalt</h2>
-                <p>Quantidade: 1</p>
-                <p>Preço: R$ 559,90</p>
-                <img src="https://dkolopwjqarcp.cloudfront.net/Custom/Content/Products/98/57/9857_bad-boy-cobalt-edp-100ml_z4_638337439460266407.webp" alt="bad boy cobalt" width="150">
-            </div>
-            <div class="item">
-                <h2>Phantom Intense</h2>
-                <p>Quantidade: 1</p>
-                <p>Preço: R$ 489,90</p>
-                <img src="https://www.bnedutyfree.com.au/media/catalog/product/cache/e6410293f9a24f502cd707ec5c46309d/4/6/467dbc4c-89a5-4f27-b7ff-a463b4c36185.jpeg" alt="phantom intense" width="150">
-            </div>
-           
-  <div class="total">
-    <h3>Total dos Produtos: R$ 1049,80</h3>
-    <p>Parcelamento em até 12x sem juros</p>
-  </div>
+  <header>
+    <div class="logo">
+      <img src="imagens/scentrix fragrances2.png" alt="Scentrix Fragrances Logo" />
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html"><i class="bi bi-house"></i>Início</a></li>
+        <li><a href="produtos.html"><i class="bi bi-tag"></i>Produtos</a></li>
+        <li><a href="sobre.html"><i class="bi bi-info-circle"></i>Sobre</a></li>
+        <li><a href="contato.html"><i class="bi bi-whatsapp"></i>Contato</a></li>
+        <li><a href="carrinho.html"><i class="bi bi-cart"></i>Carrinho</a></li>
+        <li><a href="blog.html"><i class="bi bi-book"></i>Blog</a></li>
+        <li><a href="suporte.html"><i class="bi bi-question-lg"></i>Suporte</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <a href="checkout.html" class="botao">Continuar</a>
-  <a href="produtos.html" class="botao-voltar">Voltar para Produtos</a>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 Loja Scentrix Fragances - Todos os direitos reservados.</p>
-    </footer>
+  <main>
+    <section class="carrinho">
+      <h1>Seu Carrinho de Compras</h1>
+      <p>Confira os itens que você adicionou ao carrinho.</p>
+
+      <div id="itens-carrinho"></div>
+
+      <div class="total" id="total-carrinho">Total dos Produtos: R$ 0,00</div>
+
+      <a href="checkout.html" class="botao">Continuar</a>
+      <a href="produtos.html" class="botao-voltar">Voltar para Produtos</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Loja Scentrix Fragances - Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    function carregarCarrinho() {
+      const carrinhoJSON = localStorage.getItem("carrinho");
+      const container = document.getElementById("itens-carrinho");
+      const totalDiv = document.getElementById("total-carrinho");
+
+      container.innerHTML = ""; 
+      let total = 0;
+
+      if (!carrinhoJSON) {
+        container.innerHTML = "<p>Seu carrinho está vazio.</p>";
+        totalDiv.textContent = "Total dos Produtos: R$ 0,00";
+        return;
+      }
+
+      const carrinho = JSON.parse(carrinhoJSON);
+      if (carrinho.length === 0) {
+        container.innerHTML = "<p>Seu carrinho está vazio.</p>";
+        totalDiv.textContent = "Total dos Produtos: R$ 0,00";
+        return;
+      }
+
+      const produtosAgrupados = {};
+
+      carrinho.forEach(item => {
+        if (produtosAgrupados[item.nome]) {
+          produtosAgrupados[item.nome].quantidade++;
+        } else {
+          produtosAgrupados[item.nome] = {
+            nome: item.nome,
+            preco: item.preco,
+            quantidade: 1,
+            imagem: item.imagem || "",
+          };
+        }
+      });
+
+      for (const key in produtosAgrupados) {
+        const produto = produtosAgrupados[key];
+        const itemDiv = document.createElement("div");
+        itemDiv.classList.add("item");
+
+        const img = document.createElement("img");
+        if (produto.imagem) {
+          img.src = produto.imagem;
+          img.alt = produto.nome;
+        } else {
+          img.alt = produto.nome;
+          img.src = "imagens/default.png"; 
+        }
+
+        const infoDiv = document.createElement("div");
+        infoDiv.classList.add("item-info");
+        infoDiv.innerHTML = `
+          <h2>${produto.nome}</h2>
+          <p>Quantidade: ${produto.quantidade}</p>
+          <p>Preço Unitário: R$ ${produto.preco.toFixed(2)}</p>
+          <p>Subtotal: R$ ${(produto.preco * produto.quantidade).toFixed(2)}</p>
+        `;
+
+        const btnRemover = document.createElement("button");
+        btnRemover.textContent = "Remover";
+        btnRemover.classList.add("remover-btn");
+        btnRemover.onclick = () => {
+          removerDoCarrinho(produto.nome);
+        };
+
+        infoDiv.appendChild(btnRemover);
+
+        itemDiv.appendChild(img);
+        itemDiv.appendChild(infoDiv);
+        container.appendChild(itemDiv);
+
+        total += produto.preco * produto.quantidade;
+      }
+
+      totalDiv.textContent = `Total dos Produtos: R$ ${total.toFixed(2)}`;
+    }
+
+    function removerDoCarrinho(nomeProduto) {
+      let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+      const index = carrinho.findIndex(item => item.nome === nomeProduto);
+      if (index !== -1) {
+        carrinho.splice(index, 1);
+      }
+
+      localStorage.setItem("carrinho", JSON.stringify(carrinho));
+      carregarCarrinho();
+    }
+
+    window.onload = carregarCarrinho;
+  </script>
 </body>
 </html>
