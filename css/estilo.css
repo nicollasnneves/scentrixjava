@@ -51,14 +51,17 @@ main {
   margin-top: 20px;
 }
 
-.tabela-futebol {
+.tabela-perfumes {
   margin: 30px auto;
-  max-width: 900px;
+  max-width: 700px;
   padding: 10px;
+
   background-color: #f9f9f9;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   overflow-x: auto;
+
+ 
 }
 
 table {
@@ -66,40 +69,39 @@ table {
   border-collapse: collapse;
   margin-top: 20px;
   font-family: "Lora", serif;
+
   font-size: 16px;
   min-width: 600px;
+
+
+
 }
 
 th, td {
   border: 1px solid #ddd;
-  padding: 12px;
+  padding: 8px;
   text-align: center;
 }
 
 th {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #252525;
+  color: white;
   font-size: 18px;
-  letter-spacing: 1px;
 }
 
 tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #f9f9f9;
 }
 
 tbody tr:hover {
-  background-color: #1E90FF; 
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
+  background-color: #ffe4c4;
+  cursor: default;
 }
 
 h2 {
   margin-top: 40px;
   font-size: 28px;
-  color: #000000;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
+  color: #252525;
 }
 
 @media (max-width: 900px) {
